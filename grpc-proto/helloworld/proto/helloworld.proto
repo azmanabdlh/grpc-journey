@@ -1,0 +1,19 @@
+
+syntax = "proto3";
+
+package helloworld;
+
+option go_package = "./helloworld";
+
+service HelloWorld {
+  rpc Hello(Request) returns (Response) {};
+  rpc HelloWithStream(stream Request) returns (stream Response) {};
+}
+
+message Request {
+  string username = 1;
+}
+
+message Response {
+  string message = 1;
+}
