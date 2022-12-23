@@ -30,6 +30,7 @@ func main() {
 	// fmt.Printf("Response %+v\n", resp.Message)
 
 	stream, err := client.HelloWithStream(ctx)
+	defer stream.CloseSend()
 	if err != nil {
 		fmt.Println("Error response stream:", err)
 		return
@@ -45,5 +46,4 @@ func main() {
 		fmt.Printf("Response %+v\n", resp.GetMessage())
 	}
 
-	stream.CloseSend()
 }
